@@ -74,9 +74,9 @@ echo "-------------------------------------------------------"
 wget 'http://dl.4players.de/ts/releases/?C=M;O=D' -q -O - | grep -i dir | grep -Eo '<a href=\".*\/\">.*\/<\/a>' | grep -Eo '[0-9\.?]+' | uniq | sort -V -r > TS3V
 while read ts3version; do
   if [[ "${ts3version}" =~ ^[3-9]+\.[0-9]+\.1[2-9]+\.?[0-9]*$ ]]; then
-    wget --spider -q http://dl.4players.de/ts/releases/${ts3version}/teamspeak3-server_linux_amd64-${ts3version}.tar.bz2
+    wget --spider -q https://files.teamspeak-services.com/releases/server/3.9.1/teamspeak3-server_linux_amd64-3.9.1.tar.bz2
   else
-    wget --spider -q http://dl.4players.de/ts/releases/${ts3version}/teamspeak3-server_linux-amd64-${ts3version}.tar.gz
+    wget --spider -q https://files.teamspeak-services.com/releases/server/3.9.1/teamspeak3-server_linux_amd64-3.9.1.tar.bz2
   fi
   if [[ $? == 0 ]]; then
     break
