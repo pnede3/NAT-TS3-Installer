@@ -1,4 +1,4 @@
-This install script has been forked from an old project by Bosscoder, who has enabled my friends to use a Teamspeak server on a cheap NAT vps.
+This install script has been forked from an old project by Bosscoder, who has enabled my friends to use a Teamspeak server on a cheap NAT vps. Thanks bosscoder!
 
 ## NAT TS3 Installer
 This installer will automatically install TeamSpeak 3 onto your NAT VPS, and automatically configure the ports to the ones you specify.
