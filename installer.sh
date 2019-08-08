@@ -183,7 +183,7 @@ sleep 1
 if [ "$startopt" == "y" ] || [ "$startopt" == "yes" ]; then
   echo "To find your private token to configure your server, use:"
   echo "cd opt/ts3/logs"
-  echo "ls -t1 | tail -1"
+  echo "cat $(ls -t1 | tail -1)"
   sleep 2
   /etc/init.d/teamspeak3 start
 else
