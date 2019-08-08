@@ -23,10 +23,10 @@ pubip=$( wget -qO- http://ipinfo.io/ip )
 read -p "Do you accept the Teamspeak License? [y/n]: " licensepermission
 while true; do
   if [[ "$licensepermission" == "y" ]]; then
-    echo "You accepted the Teamspeak License"
+    echo "You accepted the Teamspeak License."
     break
   elif ! [[ "$fport" = "n" ]]; then
-    echo "You did not accept the Teamspeak License. Quiting installation."
+    echo "Error: You did not accept the Teamspeak License. Quiting installation."
     exit 2
     break
   else
@@ -161,6 +161,11 @@ echo ""
 echo ""
 clear
 echo "TeamSpeak 3 has been successfully installed!"
+echo ""
+echo ""
+echo "Accepting the license..."
+touch /opt/ts3/.ts3server_license_accepted
+echo "Accepted license!"
 echo "Automatically configuring ports..."
 
 echo "Voice server is available at $pubip:$vport"
