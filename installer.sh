@@ -20,6 +20,20 @@ pvtip=$( ifconfig  | grep 'inet addr:'| grep -v '127.0.0*' | cut -d ':' -f2 | aw
 # Get the external public IP of the server
 pubip=$( wget -qO- http://ipinfo.io/ip )
 
+read -p "Do you accept the Teamspeak License? [y/n]: " licensepermission
+while true; do
+  if [[ "$licensepermission" == "y" ]]; then
+    echo "You accepted the Teamspeak License"
+    break
+  elif ! [[ "$fport" = "n" ]]; then
+    echo "You did not accept the Teamspeak License. Quiting installation."
+    exit 2
+    break
+  else
+    break
+  fi
+done
+
 # Gives user the internal ip for reference and ask for desired ports
 echo "Your private internal IP is: $pvtip"
 read -p "Enter Voice Server port [9987]: " vport
@@ -147,6 +161,8 @@ echo ""
 echo ""
 clear
 echo "TeamSpeak 3 has been successfully installed!"
+echo "Automatically configuring ports..."
+
 echo "Voice server is available at $pubip:$vport"
 echo "The file transfer port is: $fport"
 echo "The server query port is: $qport"
