@@ -1,6 +1,7 @@
 #!/bin/bash
 # Easy TeamSpeak 3 installer for Debian based OS
 # Tested on Debian 7/8 and Ubuntu 14.04 LTS
+# And also tested on Ubuntu 16 on a cheap NAT VPS!
 
 # Check for root account
 if [[ "$EUID" -ne 0 ]]; then
