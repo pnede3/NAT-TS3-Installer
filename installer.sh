@@ -156,7 +156,7 @@ EOF
 chmod 755 /etc/init.d/teamspeak3
 
 # Assign right ports and password to TS3 server
-sed -i "s/COMMANDLINE_PARAMETERS=""/COMMANDLINE_PARAMETERS="query_port=$qport filetransfer_port=$fport filetransfer_ip=0.0.0.0 serveradmin_password=$apass"/" ts3server_startscript.sh
+sed -i 's/COMMANDLINE_PARAMETERS=""/COMMANDLINE_PARAMETERS="query_port='$qport' filetransfer_port='$fport' filetransfer_ip=0.0.0.0 serveradmin_password='$apass'"/' /opt/ts3/ts3server_startscript.sh
 # Old line: sed -i "s/{2}/{4} default_voice_port=$vport query_port=$qport filetransfer_port=$fport filetransfer_ip=0.0.0.0 serveradmin_password=$apass/" /opt/ts3/ts3server_startscript.sh
 
 # Set TS3 server to auto start on system boot
