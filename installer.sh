@@ -25,6 +25,7 @@ read -p "Do you accept the Teamspeak License? [y/n]: " licensepermission
 while true; do
   if [[ "$licensepermission" == "y" ]]; then
     echo "You accepted the Teamspeak License."
+    echo "You can view the license by using: cat /opt/ts3/LICENSE"
     break
   elif ! [[ "$fport" = "n" ]]; then
     echo "Error: You did not accept the Teamspeak License. Quiting installation."
