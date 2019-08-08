@@ -20,6 +20,7 @@ pvtip=$( ifconfig  | grep 'inet addr:'| grep -v '127.0.0*' | cut -d ':' -f2 | aw
 # Get the external public IP of the server
 pubip=$( wget -qO- http://ipinfo.io/ip )
 
+# Ask the user if they accept the teamspeak license
 read -p "Do you accept the Teamspeak License? [y/n]: " licensepermission
 while true; do
   if [[ "$licensepermission" == "y" ]]; then
@@ -85,6 +86,9 @@ fi
 echo "-------------------------------------------------------"
 echo "Detecting latest TeamSpeak 3 version, please wait..."
 echo "-------------------------------------------------------"
+
+#todo
+
 wget 'http://dl.4players.de/ts/releases/?C=M;O=D' -q -O - | grep -i dir | grep -Eo '<a href=\".*\/\">.*\/<\/a>' | grep -Eo '[0-9\.?]+' | uniq | sort -V -r > TS3V
 while read ts3version; do
   if [[ "${ts3version}" =~ ^[3-9]+\.[0-9]+\.1[2-9]+\.?[0-9]*$ ]]; then
@@ -151,7 +155,8 @@ EOF
 chmod 755 /etc/init.d/teamspeak3
 
 # Assign right ports and password to TS3 server
-sed -i "s/{2}/{4} default_voice_port=$vport query_port=$qport filetransfer_port=$fport filetransfer_ip=0.0.0.0 serveradmin_password=$apass/" /opt/ts3/ts3server_startscript.sh
+sed -i "s/COMMANDLINE_PARAMETERS=""/COMMANDLINE_PARAMETERS="query_port=$qport filetransfer_port=$fport filetransfer_ip=0.0.0.0 serveradmin_password=$apass"/" ts3server_startscript.sh
+# Old line: sed -i "s/{2}/{4} default_voice_port=$vport query_port=$qport filetransfer_port=$fport filetransfer_ip=0.0.0.0 serveradmin_password=$apass/" /opt/ts3/ts3server_startscript.sh
 
 # Set TS3 server to auto start on system boot
 update-rc.d teamspeak3 defaults
