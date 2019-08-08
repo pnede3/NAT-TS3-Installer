@@ -181,9 +181,9 @@ echo ""
 read -p "Start the server now? [y/n]: " startopt
 sleep 1
 if [ "$startopt" == "y" ] || [ "$startopt" == "yes" ]; then
-  echo "Please keep the following details safe!"
-  cd ../../../../../../../opt/ts3/logs
-  cat $(ls -t1 | tail -1)
+  echo "To find your private token to configure your server, use:"
+  echo "cd opt/ts3/logs"
+  echo "ls -t1 | tail -1"
   sleep 2
   /etc/init.d/teamspeak3 start
 else
