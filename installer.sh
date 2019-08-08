@@ -182,6 +182,9 @@ read -p "Start the server now? [y/n]: " startopt
 sleep 1
 if [ "$startopt" == "y" ] || [ "$startopt" == "yes" ]; then
   echo "Please keep the following details safe!"
+  cd /opt/ts3/logs
+  privatetoken = cat $(ls -t1 | tail -1)
+  echo "$privatetoken"
   sleep 2
   /etc/init.d/teamspeak3 start
 else
